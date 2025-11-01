@@ -4,22 +4,63 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>Radar</title>
+    <title>✈️ Radar</title>
     <link rel="stylesheet" type="text/css" href="main.css">
 </head>
 
 <body>
     <section class="intro">
-        <section>
-            <h1>✈️ Radar 📡</h1>
-            <button>Connect to dongle</button>
-        </section>
+        <div class="intro-content">
+            <div class="logo">
+                <div class="signal-animation">
+                    <div class="signal-ring"></div>
+                    <div class="signal-ring"></div>
+                    <div class="signal-ring"></div>
+                </div>
+                <h1>✈️ Radar</h1>
+                <p class="subtitle">Real-time Aircraft Tracking</p>
+            </div>
+            <button id="connect-btn" class="glow-btn">
+                <span class="btn-icon">📡</span>
+                <span>Connect to Radio Dongle</span>
+            </button>
+        </div>
     </section>
 
-    <main class="app">
-        <div id="canvas">
-            <p class="blink-me">Waiting for airplane...</p>
-            <p class="data"></p>
+    <main class="app" style="display: none;">
+        <header class="app-header">
+            <div class="header-content">
+                <div class="status-indicator">
+                    <div class="pulse-dot"></div>
+                    <span class="status-text">Receiving</span>
+                </div>
+                <h2>Live Aircraft Tracking</h2>
+                <div class="aircraft-count">
+                    <span id="count-value">0</span>
+                    <span class="count-label">Aircraft Detected</span>
+                </div>
+            </div>
+        </header>
+
+        <div class="app-container">
+            <div id="waiting-message" class="waiting-overlay">
+                <div class="scanner">
+                    <div class="scanner-line"></div>
+                </div>
+                <p class="waiting-text">Scanning for aircraft...</p>
+            </div>
+
+            <div class="aircraft-list" id="aircraft-list"></div>
+        </div>
+
+        <div class="data-panel" id="raw-data-panel">
+            <div class="panel-header">
+                <h3>Raw Data Stream</h3>
+                <button class="toggle-panel" onclick="togglePanel()">−</button>
+            </div>
+            <div class="panel-content">
+                <pre id="raw-data"></pre>
+            </div>
         </div>
     </main>
 
